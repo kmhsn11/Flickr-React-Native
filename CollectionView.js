@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { AppRegistry, StyleSheet, Text, View, TextInput, Button, Alert, FlatList, Image, ActivityIndicator } from 'react-native';
+import { FlatList } from 'react-native';
 import styles from './Styles'
 import CollectionItem from './CollectionItem'
 

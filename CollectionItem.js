@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import { AppRegistry, StyleSheet, Text, View, TextInput, Button, Alert, FlatList, Image, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import styles from './Styles'
 import FlickrPhotoCell from './FlickrPhotoCell'
-
-let base64 = require('base-64')
 
 export default class CollectionItem extends Component {
 	
@@ -15,10 +13,9 @@ export default class CollectionItem extends Component {
 		let urlString = 'https://farm' + this.props.farm + '.staticflickr.com/' + this.props.server + '/' + this.props.id + '_' + this.props.secret + '_t.jpg'
 		
 
-		this.fr = new FileReader()
+		this.fileReader = new FileReader()
 
-		this.fr.onload = (e) => {
-			console.log(e.target.result)
+		this.fileReader.onload = (e) => {
 			this.setState({isLoading: false, imageData: e.target.result});
 		}
 
@@ -31,7 +28,7 @@ export default class CollectionItem extends Component {
 
   			if (this.request.status === 200) {
 
-   				this.fr.readAsDataURL(this.request.response)	 	
+   				this.fileReader.readAsDataURL(this.request.response)	 	
 
  			 }else {
    		 		console.warn('error');
@@ -46,7 +43,7 @@ export default class CollectionItem extends Component {
 	
 	componentWillUnmount(){
 		this.request.abort();
-		this.fr.abort();
+		this.fileReader.abort();
 	}
 	
 	render(){

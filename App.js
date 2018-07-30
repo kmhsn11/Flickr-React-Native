@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View, TextInput, Button, Alert, FlatList, Image, ActivityIndicator } from 'react-native';
+import { View } from 'react-native';
 import SearchBar from './SearchBar'
 import CollectionView from './CollectionView'
 
